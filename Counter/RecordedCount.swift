@@ -8,24 +8,20 @@
 
 import Foundation
 
-class Count: NSObject, NSCoding {
-//Change the name to something like "record" 
-    
+class recordedCount: NSObject, NSCoding {
     
     private var _count = 0
     private var _date = ""
+    
+    
     
     struct Keys {
         static let _count = "count"
         static let _date = "date"
     }
     
-    init(count: Int) {
-        let now = NSDate()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
-        let timeString = dateFormatter.string(from: now as Date)
-        self._date = timeString
+    init(count: Int, date: String) {
+        self._date = date
         self._count = count
     }
     
@@ -43,26 +39,4 @@ class Count: NSObject, NSCoding {
         aCoder.encode(_date, forKey: Keys._date)
     }
     
-    var count: Int {
-        get {
-            return _count
-        }
-        set {
-            _count = newValue
-        }
-    }
-    
-    var date: String {
-        get {
-            return _date
-        }
-        
-        set {
-            _date = newValue
-        }
-    }
-    
-    
-    
-
 }

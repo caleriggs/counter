@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8E28E7071E6754E300C87FB5 /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E28E7061E6754E300C87FB5 /* AddButton.swift */; };
 		8E3E19111E4989D000A0FD37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19101E4989D000A0FD37 /* AppDelegate.swift */; };
 		8E3E19131E4989D000A0FD37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19121E4989D000A0FD37 /* ViewController.swift */; };
 		8E3E19161E4989D000A0FD37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E19141E4989D000A0FD37 /* Main.storyboard */; };
 		8E3E19191E4989D100A0FD37 /* Counter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19171E4989D000A0FD37 /* Counter.xcdatamodeld */; };
 		8E3E191B1E4989D100A0FD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191A1E4989D100A0FD37 /* Assets.xcassets */; };
 		8E3E191E1E4989D100A0FD37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191C1E4989D100A0FD37 /* LaunchScreen.storyboard */; };
+		8E9470E71E806C430073161A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9470E61E806C430073161A /* DataStore.swift */; };
 		8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA33E721E57AB0800AF328F /* CountsListVC.swift */; };
-		8EDC74621E76E57D00243068 /* Count.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDC74611E76E57D00243068 /* Count.swift */; };
+		8EDC74621E76E57D00243068 /* RecordedCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDC74611E76E57D00243068 /* RecordedCount.swift */; };
 		DCB429111CABBCB37EA6C6EF /* Pods_Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A81B765706CC480B5211D /* Pods_Counter.framework */; };
 /* End PBXBuildFile section */
 
@@ -23,7 +23,6 @@
 		104A81B765706CC480B5211D /* Pods_Counter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Counter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C8D2499E1CEFE94A8D78CAC /* Pods-Counter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Counter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Counter/Pods-Counter.release.xcconfig"; sourceTree = "<group>"; };
 		7431EC232676E4B0A1BA312B /* Pods-Counter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Counter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Counter/Pods-Counter.debug.xcconfig"; sourceTree = "<group>"; };
-		8E28E7061E6754E300C87FB5 /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
 		8E3E190D1E4989D000A0FD37 /* Counter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Counter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E3E19101E4989D000A0FD37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E3E19121E4989D000A0FD37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -32,8 +31,9 @@
 		8E3E191A1E4989D100A0FD37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E3E191D1E4989D100A0FD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E3E191F1E4989D100A0FD37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8E9470E61E806C430073161A /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		8EA33E721E57AB0800AF328F /* CountsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountsListVC.swift; sourceTree = "<group>"; };
-		8EDC74611E76E57D00243068 /* Count.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Count.swift; sourceTree = "<group>"; };
+		8EDC74611E76E57D00243068 /* RecordedCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedCount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				8EA33E711E57AA9000AF328F /* Supporting Files */,
-				8EA33E701E57AA8800AF328F /* Controller */,
 				8EA33E6F1E57AA8200AF328F /* View */,
+				8EA33E701E57AA8800AF328F /* Controller */,
 				8ED362771E5389B300EED57C /* Model */,
 			);
 			path = Counter;
@@ -117,8 +117,8 @@
 		8ED362771E5389B300EED57C /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8E28E7061E6754E300C87FB5 /* AddButton.swift */,
-				8EDC74611E76E57D00243068 /* Count.swift */,
+				8EDC74611E76E57D00243068 /* RecordedCount.swift */,
+				8E9470E61E806C430073161A /* DataStore.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -257,11 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E3E19131E4989D000A0FD37 /* ViewController.swift in Sources */,
+				8E9470E71E806C430073161A /* DataStore.swift in Sources */,
 				8E3E19111E4989D000A0FD37 /* AppDelegate.swift in Sources */,
 				8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */,
-				8E28E7071E6754E300C87FB5 /* AddButton.swift in Sources */,
 				8E3E19191E4989D100A0FD37 /* Counter.xcdatamodeld in Sources */,
-				8EDC74621E76E57D00243068 /* Count.swift in Sources */,
+				8EDC74621E76E57D00243068 /* RecordedCount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

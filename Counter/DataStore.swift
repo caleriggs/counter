@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+class DataStore {
+    static let sharedInstance = DataStore()
+    private init() {}
+    var recordedCount: [recordedCount] = []
+}

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -39,12 +38,4 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
-    
-//MARK: -Ream Functions 
-    
-    func queryCounts() {
-        let realm = try! Realm()
-        
-    }
-
 }
