@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var rejectResetBtn: UIButton!
     
     var count = 0
-    var date = ""
+    var timeString = ""
     
     var countArr = [recordedCount]()
     
@@ -27,9 +27,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         countLbl.text = "0"
-        dateFormatter()
+        dateFormatter(timeString: &timeString)
+        print("The date and time is \(timeString)")
         
-    
     }
     
 //MARK: IBActions
@@ -68,7 +68,10 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        countArr.append(recordedCount(count: count, date: date))
+        countArr.append(recordedCount(count: count, date: timeString))
+        dateFormatter(timeString: &timeString)
+        print("The date and time is \(timeString)")
+        
         
     }
     
@@ -90,12 +93,11 @@ class ViewController: UIViewController {
         countLbl.text = "\(count)"
     }
     
-    private func dateFormatter() -> String {
+    private func dateFormatter(timeString: inout String) {
         let now = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
-        let timeString = dateFormatter.string(from: now as Date)
-        return timeString
+        timeString = dateFormatter.string(from: now as Date)
     }
 
 }
