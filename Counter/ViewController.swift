@@ -21,7 +21,9 @@ class ViewController: UIViewController {
     var count = 0
     var timeString = ""
     
-    var countArr = [recordedCount]()
+//    var countArr = [RecordedCount]()
+    
+    var store = DataStore.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +70,7 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        countArr.append(recordedCount(count: count, date: timeString))
+        store.recordedCount.append(RecordedCount(count: count, date: timeString))
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
         
@@ -101,4 +103,23 @@ class ViewController: UIViewController {
     }
 
 }
+    //MARK: NSKeyedArchiver
+
+    var filePath: String {
+
+    let manager = FileManager.default
+    let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+    print("the url is \(url)")
+    return (url!.appendingPathComponent("Data").path)
+    
+    }
+
+//    func saveData(record: RecordedCount) {
+//        DataStore.sharedInstance.RecordedCount.append(RecordedCount(count: record, date: ))
+//    }
+
+
+
+
+
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class recordedCount: NSObject, NSCoding {
+class RecordedCount: NSObject, NSCoding {
     
     private var _count = 0
     private var _date = ""
