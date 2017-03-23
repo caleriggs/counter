@@ -115,9 +115,23 @@ class ViewController: UIViewController {
     
     }
 
-    func saveData(record: RecordedCount) {
+    private func saveData(record: RecordedCount) {
+        DataStore.sharedInstance.recordedCountArr.append(record)
+    }
+
+    private func loadData() {
+    
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordedCount] {
+            DataStore.sharedInstance.recordedCountArr = data
+        }
         
     }
+
+
+
+
+
+
 
 
 
