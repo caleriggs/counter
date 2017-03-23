@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E34322E1E84557C004DB74B /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9470E81E8177D20073161A /* RecordCell.swift */; };
 		8E3E19111E4989D000A0FD37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19101E4989D000A0FD37 /* AppDelegate.swift */; };
 		8E3E19131E4989D000A0FD37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19121E4989D000A0FD37 /* ViewController.swift */; };
 		8E3E19161E4989D000A0FD37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E19141E4989D000A0FD37 /* Main.storyboard */; };
@@ -14,7 +15,6 @@
 		8E3E191B1E4989D100A0FD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191A1E4989D100A0FD37 /* Assets.xcassets */; };
 		8E3E191E1E4989D100A0FD37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191C1E4989D100A0FD37 /* LaunchScreen.storyboard */; };
 		8E9470E71E806C430073161A /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9470E61E806C430073161A /* DataStore.swift */; };
-		8E9470E91E8177D20073161A /* RecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9470E81E8177D20073161A /* RecordCell.swift */; };
 		8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA33E721E57AB0800AF328F /* CountsListVC.swift */; };
 		8EDC74621E76E57D00243068 /* RecordedCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDC74611E76E57D00243068 /* RecordedCount.swift */; };
 		DCB429111CABBCB37EA6C6EF /* Pods_Counter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 104A81B765706CC480B5211D /* Pods_Counter.framework */; };
@@ -262,7 +262,7 @@
 				8E3E19131E4989D000A0FD37 /* ViewController.swift in Sources */,
 				8E9470E71E806C430073161A /* DataStore.swift in Sources */,
 				8E3E19111E4989D000A0FD37 /* AppDelegate.swift in Sources */,
-				8E9470E91E8177D20073161A /* RecordCell.swift in Sources */,
+				8E34322E1E84557C004DB74B /* RecordCell.swift in Sources */,
 				8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */,
 				8E3E19191E4989D100A0FD37 /* Counter.xcdatamodeld in Sources */,
 				8EDC74621E76E57D00243068 /* RecordedCount.swift in Sources */,

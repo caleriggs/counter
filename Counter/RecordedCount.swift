@@ -13,7 +13,17 @@ class RecordedCount: NSObject, NSCoding {
     private var _count = 0
     private var _date = ""
     
+    var count: Int {
+        return _count
+    }
     
+    var date: String {
+        get {
+            return _date
+        } set {
+            _date = newValue
+        }
+    }
     
     struct Keys {
         static let _count = "count"

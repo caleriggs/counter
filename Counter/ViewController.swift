@@ -18,12 +18,12 @@ class ViewController: UIViewController {
     @IBOutlet weak var confirmResetBtn: UIButton!
     @IBOutlet weak var rejectResetBtn: UIButton!
     
-    var count = 0
+    var OriginalCount = 0
     var timeString = ""
     
 //    var countArr = [RecordedCount]()
     
-    var store = DataStore.sharedInstance
+    var store = DataStore.sharedInstance.recordedCountArr
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
+        print(filePath)
         
     }
     
@@ -39,14 +40,14 @@ class ViewController: UIViewController {
 
     @IBAction func onAddBtnPressed(_ sender: Any) {
         
-        count += 1
+        OriginalCount += 1
         countLblManager()
         
     }
 
     @IBAction func onMinusBtnPressed(_ sender: Any) {
         
-        count -= 1
+        OriginalCount -= 1
         countLblManager()
         
     }
@@ -57,7 +58,7 @@ class ViewController: UIViewController {
     
     @IBAction func onConfirmBtnPressed(_ sender: Any) {
         
-        count = 0
+        OriginalCount = 0
         countLblManager()
         triggerModeChage()
         
@@ -70,7 +71,7 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        store.recordedCount.append(RecordedCount(count: count, date: timeString))
+        store.append(RecordedCount(count: OriginalCount, date: timeString))
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
         
@@ -89,10 +90,10 @@ class ViewController: UIViewController {
     }
     
     private func countLblManager() {
-        if count < 0 {
-            count = 0
+        if OriginalCount < 0 {
+            OriginalCount = 0
         }
-        countLbl.text = "\(count)"
+        countLbl.text = "\(OriginalCount)"
     }
     
     private func dateFormatter(timeString: inout String) {
@@ -114,9 +115,9 @@ class ViewController: UIViewController {
     
     }
 
-//    func saveData(record: RecordedCount) {
-//        DataStore.sharedInstance.RecordedCount.append(RecordedCount(count: record, date: ))
-//    }
+    func saveData(record: RecordedCount) {
+        
+    }
 
 
 

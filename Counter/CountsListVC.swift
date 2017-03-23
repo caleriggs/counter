@@ -29,7 +29,11 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
-            let 
+            let recordedCount = DataStore.sharedInstance.recordedCountArr[indexPath.row]
+            
+            
+            
+            recordCell.updateRecordCellContents(recordedCount: recordedCount.count, recordedDate: recordedCount.date)
             
             return recordCell
         } else {
@@ -42,6 +46,6 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataStore.sharedInstance.recordedCount.count
+        return DataStore.sharedInstance.recordedCountArr.count
     }
 }

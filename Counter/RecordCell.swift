@@ -12,13 +12,14 @@ import UIKit
 class RecordCell: UITableViewCell {
     
     @IBOutlet weak var recordedCountLbl: UILabel!
-    @IBOutlet weak var recordedDate: UILabel!
+    @IBOutlet weak var recordedDateLbl: UILabel!
     
 //    private var store = DataStore.sharedInstance.recordedCount
 //    var countString = DataStore.sharedInstance.recordedCount
     
-    func updateCellContents() {
-        recordedCountLbl.text = ""
+    public func updateRecordCellContents(recordedCount: Int, recordedDate: String) {
+        recordedCountLbl.text = "\(recordedCount)"
+        recordedDateLbl.text = recordedDate
     }
     
 }
