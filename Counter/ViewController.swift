@@ -20,9 +20,7 @@ class ViewController: UIViewController {
     
     var OriginalCount = 0
     var timeString = ""
-    
-//    var countArr = [RecordedCount]()
-    
+        
     var store = DataStore.sharedInstance.recordedCountArr
     
     override func viewDidLoad() {
@@ -78,6 +76,9 @@ class ViewController: UIViewController {
         
     }
     
+//    @IBAction func onViewCountsBtnPressed(_ sender: Any) {
+//        
+//    }
     
     //MARK: FUNCTIONS
     

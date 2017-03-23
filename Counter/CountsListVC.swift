@@ -29,13 +29,13 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
+            
             let recordedCount = DataStore.sharedInstance.recordedCountArr[indexPath.row]
-            
-            
             
             recordCell.updateRecordCellContents(recordedCount: recordedCount.count, recordedDate: recordedCount.date)
             
             return recordCell
+            
         } else {
             return UITableViewCell()
         }

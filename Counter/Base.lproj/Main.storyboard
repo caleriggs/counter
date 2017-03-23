@@ -129,6 +129,7 @@
                                     <navigationItem title="Counter" id="UI2-Dv-L9K">
                                         <barButtonItem key="leftBarButtonItem" title="View Counts" id="mYK-Pf-hcC">
                                             <connections>
+                                                <action selector="onViewCountsBtnPressed:" destination="BYZ-38-t0r" id="D2A-FM-MHf"/>
                                                 <segue destination="3b1-mY-ljo" kind="showDetail" id="hQT-d0-LBp"/>
                                             </connections>
                                         </barButtonItem>
@@ -174,7 +175,7 @@
                         <viewControllerLayoutGuide type="top" id="YqQ-oR-wht"/>
                         <viewControllerLayoutGuide type="bottom" id="Wdt-q3-wkZ"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3hE-Eq-nms" customClass="CountsListVC" customModule="Counter" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="3hE-Eq-nms">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
