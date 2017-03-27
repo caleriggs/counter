@@ -8,8 +8,8 @@
 
 import Foundation
 
-class DataStore {
-    static let sharedInstance = DataStore()
-    private init() {}
-    var recordedCountArr: [RecordedCount] = []
-}
+//class DataStore {
+//    static let sharedInstance = DataStore()
+//    init() {}
+//    var recordedCountArr: [RecordedCount] = []
+//}

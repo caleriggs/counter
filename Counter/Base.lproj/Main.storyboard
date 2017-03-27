@@ -129,7 +129,6 @@
                                     <navigationItem title="Counter" id="UI2-Dv-L9K">
                                         <barButtonItem key="leftBarButtonItem" title="View Counts" id="mYK-Pf-hcC">
                                             <connections>
-                                                <action selector="onViewCountsBtnPressed:" destination="BYZ-38-t0r" id="D2A-FM-MHf"/>
                                                 <segue destination="3b1-mY-ljo" kind="showDetail" id="hQT-d0-LBp"/>
                                             </connections>
                                         </barButtonItem>

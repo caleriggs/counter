@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController {
     
@@ -18,10 +19,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var confirmResetBtn: UIButton!
     @IBOutlet weak var rejectResetBtn: UIButton!
     
-    var OriginalCount = 0
+    var originalCount = 0
     var timeString = ""
-        
-    var store = DataStore.sharedInstance.recordedCountArr
+    
+//    var store = DataStore.sharedInstance.recordedCountArr
+    var recordedCountArr = [RecordedCount]()
+    
+    let defaults = UserDefaults.standard
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +36,10 @@ class ViewController: UIViewController {
         print("The date and time is \(timeString)")
         print(filePath)
         
+        
+        defaults.set(recordedCountArr, forKey: "recordedCountArr")
+        defaults.synchronize()
+    
     }
     
 //MARK: IBActions
@@ -38,14 +47,14 @@ class ViewController: UIViewController {
 
     @IBAction func onAddBtnPressed(_ sender: Any) {
         
-        OriginalCount += 1
+        originalCount += 1
         countLblManager()
         
     }
 
     @IBAction func onMinusBtnPressed(_ sender: Any) {
         
-        OriginalCount -= 1
+        originalCount -= 1
         countLblManager()
         
     }
@@ -56,7 +65,7 @@ class ViewController: UIViewController {
     
     @IBAction func onConfirmBtnPressed(_ sender: Any) {
         
-        OriginalCount = 0
+        originalCount = 0
         countLblManager()
         triggerModeChage()
         
@@ -69,15 +78,18 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        store.append(RecordedCount(count: OriginalCount, date: timeString))
+        recordedCountArr.append(RecordedCount(count: originalCount, date: timeString))
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
-        
+        print(recordedCountArr.count)
+        print(recordedCountArr)
+        print("\(recordedCountArr)")
         
     }
     
 //    @IBAction func onViewCountsBtnPressed(_ sender: Any) {
-//        
+//        print(recordedCountArr)
+//        print("view counts pressed")
 //    }
     
     //MARK: FUNCTIONS
@@ -91,10 +103,10 @@ class ViewController: UIViewController {
     }
     
     private func countLblManager() {
-        if OriginalCount < 0 {
-            OriginalCount = 0
+        if originalCount < 0 {
+            originalCount = 0
         }
-        countLbl.text = "\(OriginalCount)"
+        countLbl.text = "\(originalCount)"
     }
     
     private func dateFormatter(timeString: inout String) {
@@ -116,17 +128,19 @@ class ViewController: UIViewController {
     
     }
 
-    private func saveData(record: RecordedCount) {
-        DataStore.sharedInstance.recordedCountArr.append(record)
-    }
-
-    private func loadData() {
-    
-        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordedCount] {
-            DataStore.sharedInstance.recordedCountArr = data
-        }
-        
-    }
+//    private func saveData(record: RecordedCount) {
+//        
+//        DataStore.sharedInstance.recordedCountArr.append(record)
+//        
+//    }
+//
+//    private func loadData() {
+//    
+//        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordedCount] {
+//            DataStore.sharedInstance.recordedCountArr = data
+//        }
+//        
+//    }
 
 
 

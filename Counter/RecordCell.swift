@@ -14,6 +14,7 @@ class RecordCell: UITableViewCell {
     @IBOutlet weak var recordedCountLbl: UILabel!
     @IBOutlet weak var recordedDateLbl: UILabel!
     
+    
 //    private var store = DataStore.sharedInstance.recordedCount
 //    var countString = DataStore.sharedInstance.recordedCount
     
