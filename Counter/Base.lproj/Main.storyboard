@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="height" constant="79" id="dx9-AE-vbL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="46"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="hgH-mN-mVa">
@@ -74,7 +74,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="78"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ka-83-khL">
-                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="118" height="78"/>
                                                 <color key="backgroundColor" red="0.13664317519999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="78" id="8ec-Pv-Iu9"/>
@@ -87,7 +87,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-qf-znK">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
+                                                <rect key="frame" x="118" y="0.0" width="139" height="78"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="139" id="IdH-Va-4Te"/>
@@ -101,7 +101,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6W-5j-TS9">
-                                                <rect key="frame" x="375" y="0.0" width="0.0" height="78"/>
+                                                <rect key="frame" x="257" y="0.0" width="118" height="78"/>
                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="78" id="uem-Hv-5Mi"/>
@@ -234,8 +234,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.36928481540000002" blue="0.15014156880000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
-                                            <outlet property="recordedCountLbl" destination="J3a-a5-qkP" id="TqA-fb-7ov"/>
-                                            <outlet property="recordedDateLbl" destination="lA7-il-8fr" id="h8t-h5-TlB"/>
+                                            <outlet property="recordedCountLbl" destination="J3a-a5-qkP" id="XFQ-gf-kUb"/>
+                                            <outlet property="recordedDateLbl" destination="lA7-il-8fr" id="igZ-9A-lGa"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

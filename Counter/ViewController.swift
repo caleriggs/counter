@@ -33,9 +33,7 @@ class ViewController: UIViewController {
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
-        
-        defaults.synchronize()
-        
+        loadData()
     
     }
     
@@ -76,7 +74,7 @@ class ViewController: UIViewController {
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
         dateFormatter(timeString: &timeString)
-        store.sessionRecords.append(SessionRecord(count: originalCount, date: timeString))
+        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
         print("The date and time is \(timeString)")
         
     }
@@ -101,37 +99,40 @@ class ViewController: UIViewController {
     private func dateFormatter(timeString: inout String) {
         let now = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
+        dateFormatter.dateFormat = "MMMM dd, yyyy \r hh:mma zzz"
         timeString = dateFormatter.string(from: now as Date)
     }
     
-
-
-}
     //MARK: NSKeyedArchiver
-
+    
     var filePath: String {
-
-    let manager = FileManager.default
-    let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
-    print("the url is \(url)")
-    return (url!.appendingPathComponent("Data").path)
-    
+        
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+        print("the url is \(String(describing: url))")
+        return (url!.appendingPathComponent("Data").path)
+        
     }
-
+    
     private func saveData(record: SessionRecord) {
-
         
+        self.store.sessionRecords.append(record)
+        NSKeyedArchiver.archiveRootObject(self.store.sessionRecords, toFile: filePath)
         
     }
-
-    private func loadData() {
     
-        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
-            
+    private func loadData() {
+        
+        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
+            self.store.sessionRecords = ourData
         }
         
     }
+
+}
+
+
+
 
 
 

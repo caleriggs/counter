@@ -15,6 +15,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     let defaults = UserDefaults.standard
     var timeString = ""
+    var store = DataStore.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,9 +36,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
         
-            if let dataArray = defaults.object(forKey: "recordedCountArr") as? [SessionRecord] {
-                recordCell.updateRecordCellContents(recordedCount: dataArray[indexPath.row].recordedCount, recordedDate: timeString)
-            }
+            recordCell.updateRecordCellContents(recordedCount: self.store.sessionRecords[indexPath.row].recordedCount, recordedDate: self.store.sessionRecords[indexPath.row].date)
             
             return recordCell
             
@@ -52,20 +51,15 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-//        let arrCount = [SessionRecord]()
-//        if let stuff = defaults.object(forKey: "recordedCountArr") as? [SessionRecord] {
-//            print("here's the array \(stuff)")
-//        }
-//        return arrCount.count
+        return self.store.sessionRecords.count
+
+}
+
+//    private func dateFormatter(timeString: inout String) {
+//        let now = NSDate()
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "MMMM dd, yyyy, \r hh:mma zzz"
+//        timeString = dateFormatter.string(from: now as Date)
 //    }
 }
-
-private func dateFormatter(timeString: inout String) {
-    let now = NSDate()
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
-    timeString = dateFormatter.string(from: now as Date)
-}
-
 

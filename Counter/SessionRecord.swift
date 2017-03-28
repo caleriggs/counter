@@ -18,9 +18,9 @@ class SessionRecord: NSObject, NSCoding {
         static let date = "date"
     }
     
-    init(count: Int, date: String) {
+    init(recordedCount: Int, date: String) {
         self.date = date
-        self.recordedCount = count
+        self.recordedCount = recordedCount
     }
     
     required init(coder decoder: NSCoder) {
