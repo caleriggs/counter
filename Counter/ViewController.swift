@@ -22,11 +22,10 @@ class ViewController: UIViewController {
     var originalCount = 0
     var timeString = ""
     
-//    var store = DataStore.sharedInstance.recordedCountArr
-    var recordedCountArr = [RecordedCount]()
+    var store = DataStore.sharedInstance
+    
     
     let defaults = UserDefaults.standard
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +33,9 @@ class ViewController: UIViewController {
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
-        print(filePath)
         
-        
-        defaults.set(recordedCountArr, forKey: "recordedCountArr")
         defaults.synchronize()
+        
     
     }
     
@@ -78,19 +75,11 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        recordedCountArr.append(RecordedCount(count: originalCount, date: timeString))
         dateFormatter(timeString: &timeString)
+        store.sessionRecords.append(SessionRecord(count: originalCount, date: timeString))
         print("The date and time is \(timeString)")
-        print(recordedCountArr.count)
-        print(recordedCountArr)
-        print("\(recordedCountArr)")
         
     }
-    
-//    @IBAction func onViewCountsBtnPressed(_ sender: Any) {
-//        print(recordedCountArr)
-//        print("view counts pressed")
-//    }
     
     //MARK: FUNCTIONS
     
@@ -115,6 +104,8 @@ class ViewController: UIViewController {
         dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
         timeString = dateFormatter.string(from: now as Date)
     }
+    
+
 
 }
     //MARK: NSKeyedArchiver
@@ -128,19 +119,19 @@ class ViewController: UIViewController {
     
     }
 
-//    private func saveData(record: RecordedCount) {
-//        
-//        DataStore.sharedInstance.recordedCountArr.append(record)
-//        
-//    }
-//
-//    private func loadData() {
-//    
-//        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [RecordedCount] {
-//            DataStore.sharedInstance.recordedCountArr = data
-//        }
-//        
-//    }
+    private func saveData(record: SessionRecord) {
+
+        
+        
+    }
+
+    private func loadData() {
+    
+        if let data = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
+            
+        }
+        
+    }
 
 
 

@@ -35,9 +35,9 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
         
-            let data = defaults.object(forKey: "recordedCountArr") as? [RecordedCount]
-            
-            recordCell.updateRecordCellContents(recordedCount: 5, recordedDate: timeString)
+            if let dataArray = defaults.object(forKey: "recordedCountArr") as? [SessionRecord] {
+                recordCell.updateRecordCellContents(recordedCount: dataArray[indexPath.row].recordedCount, recordedDate: timeString)
+            }
             
             return recordCell
             
@@ -52,12 +52,13 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let arrCount = [RecordedCount]()
-        if let stuff = defaults.object(forKey: "recordedCountArr") as? [RecordedCount] {
-            print("here's the array \(stuff)")
-        }
-        return arrCount.count
-    }
+        
+//        let arrCount = [SessionRecord]()
+//        if let stuff = defaults.object(forKey: "recordedCountArr") as? [SessionRecord] {
+//            print("here's the array \(stuff)")
+//        }
+//        return arrCount.count
+//    }
 }
 
 private func dateFormatter(timeString: inout String) {
@@ -65,10 +66,6 @@ private func dateFormatter(timeString: inout String) {
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMMM dd, yyyy, hh:mma zzz"
     timeString = dateFormatter.string(from: now as Date)
-}
-
-func returnData() {
-    
 }
 
 
