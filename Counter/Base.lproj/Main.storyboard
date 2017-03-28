@@ -38,14 +38,15 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="uUL-fN-ZVK">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="83"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxu-52-zTm">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lxu-52-zTm">
                                                 <rect key="frame" x="0.0" y="0.0" width="167.5" height="83"/>
-                                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.34509803921568627" green="0.7803921568627451" blue="0.68627450980392157" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="83" id="LwU-h5-zvQ"/>
                                                 </constraints>
-                                                <state key="normal" title="MINUS">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="83"/>
+                                                <state key="normal" title="−">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onMinusBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PAa-wU-18A"/>
@@ -53,7 +54,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mhy-6t-6fu">
                                                 <rect key="frame" x="207.5" y="0.0" width="167.5" height="83"/>
-                                                <color key="backgroundColor" red="1" green="0.36928481540000002" blue="0.15014156880000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" red="0.93950269670050757" green="0.59098641506893612" blue="0.23414073459195955" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="83" id="NVt-mU-VUI"/>
                                                 </constraints>
@@ -70,17 +71,18 @@
                                             <constraint firstItem="Lxu-52-zTm" firstAttribute="leading" secondItem="uUL-fN-ZVK" secondAttribute="leadingMargin" id="L0i-Gc-CEz"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3t1-UC-fA8">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="3t1-UC-fA8">
                                         <rect key="frame" x="0.0" y="123" width="375" height="78"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ka-83-khL">
-                                                <rect key="frame" x="0.0" y="0.0" width="118" height="78"/>
-                                                <color key="backgroundColor" red="0.13664317519999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="98" height="78"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="78" id="8ec-Pv-Iu9"/>
                                                 </constraints>
-                                                <state key="normal" title="YES">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="83"/>
+                                                <state key="normal" title="✓">
+                                                    <color key="titleColor" red="0.34509803919999998" green="0.78039215689999997" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onConfirmBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6r1-JW-VsE"/>
@@ -101,13 +103,11 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6W-5j-TS9">
-                                                <rect key="frame" x="257" y="0.0" width="118" height="78"/>
-                                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="78" id="uem-Hv-5Mi"/>
-                                                </constraints>
-                                                <state key="normal" title="NO">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <rect key="frame" x="277" y="0.0" width="98" height="78"/>
+                                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="103"/>
+                                                <state key="normal" title="𐄂">
+                                                    <color key="titleColor" red="0.93950269669999997" green="0.59098641510000005" blue="0.23414073460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="onRejectResetBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RNQ-1y-bnq"/>
