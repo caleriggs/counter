@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -15,14 +14,17 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     let defaults = UserDefaults.standard
     var timeString = ""
-    var store = DataStore.sharedInstance
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
 
     
@@ -36,7 +38,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
         
-            recordCell.updateRecordCellContents(recordedCount: self.store.sessionRecords[indexPath.row].recordedCount, recordedDate: self.store.sessionRecords[indexPath.row].date)
+            recordCell.updateRecordCellContents(recordedCount: DataStore.sharedInstance.sessionRecords[indexPath.row].recordedCount,
+                                                recordedDate: DataStore.sharedInstance.sessionRecords[indexPath.row].date)
             
             return recordCell
             
@@ -51,15 +54,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.store.sessionRecords.count
+        return DataStore.sharedInstance.sessionRecords.count
 
-}
-
-//    private func dateFormatter(timeString: inout String) {
-//        let now = NSDate()
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMMM dd, yyyy, \r hh:mma zzz"
-//        timeString = dateFormatter.string(from: now as Date)
-//    }
+    }
 }
 

@@ -75,7 +75,7 @@
                                         <rect key="frame" x="0.0" y="123" width="375" height="78"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ka-83-khL">
-                                                <rect key="frame" x="0.0" y="0.0" width="98" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="78"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="78" id="8ec-Pv-Iu9"/>
@@ -89,7 +89,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xb9-qf-znK">
-                                                <rect key="frame" x="118" y="0.0" width="139" height="78"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="78"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="139" id="IdH-Va-4Te"/>
@@ -103,7 +103,7 @@
                                                 </connections>
                                             </button>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J6W-5j-TS9">
-                                                <rect key="frame" x="277" y="0.0" width="98" height="78"/>
+                                                <rect key="frame" x="375" y="0.0" width="0.0" height="78"/>
                                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="103"/>
                                                 <state key="normal" title="𐄂">
@@ -129,7 +129,7 @@
                                     <navigationItem title="Counter" id="UI2-Dv-L9K">
                                         <barButtonItem key="leftBarButtonItem" title="View Counts" id="mYK-Pf-hcC">
                                             <connections>
-                                                <segue destination="3b1-mY-ljo" kind="showDetail" id="hQT-d0-LBp"/>
+                                                <segue destination="3b1-mY-ljo" kind="showDetail" identifier="MainToCountsVC" id="hQT-d0-LBp"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Submit" id="A4B-t4-Mtu">

@@ -19,23 +19,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var confirmResetBtn: UIButton!
     @IBOutlet weak var rejectResetBtn: UIButton!
     
-    var originalCount = 0
+    var originalCount: Int = 0
     var timeString = ""
-    
-    var store = DataStore.sharedInstance
-    
-    
-    let defaults = UserDefaults.standard
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        countLbl.text = "0"
-        dateFormatter(timeString: &timeString)
-        print("The date and time is \(timeString)")
-        loadData()
-    
-    }
+
     
 //MARK: IBActions
     
@@ -74,9 +60,14 @@ class ViewController: UIViewController {
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
         dateFormatter(timeString: &timeString)
-        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
+//        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
         print("The date and time is \(timeString)")
-        
+        saveData(recordedCount: originalCount, date: timeString)
+
+    }
+    
+    @IBAction func onViewBtnPressed(_ sender: Any) {
+        loadData()
     }
     
     //MARK: FUNCTIONS
@@ -85,8 +76,8 @@ class ViewController: UIViewController {
         resetBtn.isHidden = !resetBtn.isHidden
         confirmResetBtn.isHidden = !confirmResetBtn.isHidden
         rejectResetBtn.isHidden = !rejectResetBtn.isHidden
-        addBtn.isHidden = !addBtn.isHidden
-        minusBtn.isHidden = !minusBtn.isHidden
+        addBtn.isEnabled = !addBtn.isEnabled
+        minusBtn.isEnabled = !minusBtn.isEnabled
     }
     
     private func countLblManager() {
@@ -96,7 +87,7 @@ class ViewController: UIViewController {
         countLbl.text = "\(originalCount)"
     }
     
-    private func dateFormatter(timeString: inout String) {
+    func dateFormatter(timeString: inout String) {
         let now = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy \r hh:mma zzz"
@@ -105,7 +96,7 @@ class ViewController: UIViewController {
     
     //MARK: NSKeyedArchiver
     
-    var filePath: String {
+    public var filePath: String {
         
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -114,18 +105,35 @@ class ViewController: UIViewController {
         
     }
     
-    private func saveData(record: SessionRecord) {
+    func saveData(recordedCount: Int, date: String) {
         
-        self.store.sessionRecords.append(record)
-        NSKeyedArchiver.archiveRootObject(self.store.sessionRecords, toFile: filePath)
+        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date))
+        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: filePath)
         
     }
     
-    private func loadData() {
+    public func loadData() {
         
         if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
-            self.store.sessionRecords = ourData
+            DataStore.sharedInstance.sessionRecords = ourData
+            print("the data loaded, YAAAAAAYYYYY!!!!!")
+            print("here is our data \(ourData)")
+        } else {
+            print("The data didn't load")
         }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        countLbl.text = "0"
+        dateFormatter(timeString: &timeString)
+        print("The date and time is \(timeString)")
+        
+        loadData()
+        
+        print(DataStore.sharedInstance.sessionRecords)
         
     }
 

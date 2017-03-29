@@ -18,6 +18,8 @@ class SessionRecord: NSObject, NSCoding {
         static let date = "date"
     }
     
+    override init () {}
+    
     init(recordedCount: Int, date: String) {
         self.date = date
         self.recordedCount = recordedCount
@@ -31,13 +33,11 @@ class SessionRecord: NSObject, NSCoding {
         if let sessionRecordDate = decoder.decodeObject(forKey: Keys.date) as? String {
             date = sessionRecordDate
         }
+
     }
     
     func encode(with coder: NSCoder) {
-        coder.encode(recordedCount, forKey: Keys.recordedCount)
-        coder.encode(date, forKey: Keys.date)
+        coder.encode(self.recordedCount, forKey: Keys.recordedCount)
+        coder.encode(self.date, forKey: Keys.date)
     }
-    
-    
-    
 }
