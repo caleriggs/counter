@@ -26,14 +26,14 @@ class SessionRecord: NSObject, NSCoding {
     }
     
     required init(coder decoder: NSCoder) {
+        super.init()
         
-        if let sessionRecordCount = decoder.decodeObject(forKey: Keys.recordedCount) as? Int {
-            recordedCount = sessionRecordCount
-        }
+        let sessionRecordCount = decoder.decodeInteger(forKey: Keys.recordedCount)
+        recordedCount = sessionRecordCount
         if let sessionRecordDate = decoder.decodeObject(forKey: Keys.date) as? String {
             date = sessionRecordDate
         }
-
+        
     }
     
     func encode(with coder: NSCoder) {

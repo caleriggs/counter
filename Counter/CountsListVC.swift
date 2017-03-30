@@ -21,6 +21,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         tableView.delegate = self
         tableView.dataSource = self
         
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,5 +58,17 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         return DataStore.sharedInstance.sessionRecords.count
 
     }
+    
+//    public func loadData() {
+//        
+//        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
+//            DataStore.sharedInstance.sessionRecords = ourData
+//            print("the data loaded, YAAAAAAYYYYY!!!!!")
+//            print("here is our data \(ourData)")
+//        } else {
+//            print("The data didn't load")
+//        }
+//        
+//    }
 }
 

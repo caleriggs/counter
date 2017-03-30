@@ -96,7 +96,7 @@ class ViewController: UIViewController {
     
     //MARK: NSKeyedArchiver
     
-    public var filePath: String {
+    var filePath: String {
         
         let manager = FileManager.default
         let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -105,14 +105,14 @@ class ViewController: UIViewController {
         
     }
     
-    func saveData(recordedCount: Int, date: String) {
+    private func saveData(recordedCount: Int, date: String) {
         
         DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date))
         NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: filePath)
         
     }
     
-    public func loadData() {
+    private func loadData() {
         
         if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
             DataStore.sharedInstance.sessionRecords = ourData
