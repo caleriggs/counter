@@ -59,10 +59,26 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        dateFormatter(timeString: &timeString)
-//        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
-        print("The date and time is \(timeString)")
-        saveData(recordedCount: originalCount, date: timeString)
+        let alertController = UIAlertController(title: "Hello", message: "Here's a message", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in
+            print("Cancel")
+        }
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { (result: UIAlertAction) -> Void in
+            self.dateFormatter(timeString: &self.timeString)
+            //        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
+            print("The date and time is \(self.timeString)")
+            self.saveData(recordedCount: self.originalCount, date: self.timeString)
+            print("OK")
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        
+        show(alertController, sender: self)
+        
+
 
     }
     
