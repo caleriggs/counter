@@ -40,7 +40,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
         
             recordCell.updateRecordCellContents(recordedCount: DataStore.sharedInstance.sessionRecords[indexPath.row].recordedCount,
-                                                recordedDate: DataStore.sharedInstance.sessionRecords[indexPath.row].date)
+                                                recordedDate: DataStore.sharedInstance.sessionRecords[indexPath.row].date,
+                                                recordedNote: DataStore.sharedInstance.sessionRecords[indexPath.row].note)
             
             return recordCell
             

@@ -193,43 +193,51 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="78" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y39-ow-2lD">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="114" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y39-ow-2lD">
                                 <rect key="frame" x="16" y="60" width="343" height="607"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordedCountCell" rowHeight="78" id="aMd-PE-ZIW" customClass="RecordCell" customModule="Counter" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="78"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="recordedCountCell" rowHeight="114" id="aMd-PE-ZIW" customClass="RecordCell" customModule="Counter" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="114"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aMd-PE-ZIW" id="c8O-rg-LPm">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="78"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="114"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0000" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3a-a5-qkP">
-                                                    <rect key="frame" x="1" y="8" width="100" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="OAL-xa-xkt"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="38"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="November 20, 2017 00:00PM CDT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-il-8fr">
-                                                    <rect key="frame" x="109" y="8" width="226" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="226" id="PmR-lM-rbc"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AfM-Rw-5Zw">
+                                                    <rect key="frame" x="8" y="8" width="327" height="98"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3a-a5-qkP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="163.5" height="98"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="38"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Zba-QS-N7Y">
+                                                            <rect key="frame" x="163.5" y="0.0" width="163.5" height="98"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Here's a note about the count I recorded." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RRn-Lg-FT6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="41"/>
+                                                                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="November 20, 2017 00:00PM CDT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lA7-il-8fr">
+                                                                    <rect key="frame" x="0.0" y="41" width="154" height="57"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="lA7-il-8fr" firstAttribute="top" secondItem="c8O-rg-LPm" secondAttribute="topMargin" id="UAS-ZB-YUG"/>
-                                                <constraint firstItem="J3a-a5-qkP" firstAttribute="top" secondItem="c8O-rg-LPm" secondAttribute="top" constant="8" id="V0A-S8-nUg"/>
-                                                <constraint firstItem="J3a-a5-qkP" firstAttribute="leading" secondItem="c8O-rg-LPm" secondAttribute="leading" constant="1" id="XLd-Mg-YbD"/>
-                                                <constraint firstItem="lA7-il-8fr" firstAttribute="trailing" secondItem="c8O-rg-LPm" secondAttribute="trailingMargin" id="ggn-3e-Wkg"/>
-                                                <constraint firstAttribute="bottom" secondItem="J3a-a5-qkP" secondAttribute="bottom" constant="8" id="hgU-cL-T5Q"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="lA7-il-8fr" secondAttribute="bottom" id="kj8-ya-4Ua"/>
+                                                <constraint firstAttribute="trailing" secondItem="AfM-Rw-5Zw" secondAttribute="trailing" constant="8" id="7XZ-qc-woo"/>
+                                                <constraint firstItem="AfM-Rw-5Zw" firstAttribute="top" secondItem="c8O-rg-LPm" secondAttribute="top" constant="8" id="lUn-JR-K2z"/>
+                                                <constraint firstItem="AfM-Rw-5Zw" firstAttribute="leading" secondItem="c8O-rg-LPm" secondAttribute="leading" constant="8" id="tNs-nN-lSm"/>
+                                                <constraint firstAttribute="bottom" secondItem="AfM-Rw-5Zw" secondAttribute="bottom" constant="8" id="xQM-r3-m7d"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="0.36928481540000002" blue="0.15014156880000001" alpha="1" colorSpace="calibratedRGB"/>

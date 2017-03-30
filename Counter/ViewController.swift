@@ -59,7 +59,13 @@ class ViewController: UIViewController {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Hello", message: "Here's a message", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Submit Record", message: "Would you like to record this count?", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField: UITextField) in
+            textField.placeholder = "Add a note/title here (Optional)."
+            textField.keyboardAppearance = .dark
+            textField.text = ""t
+        }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in
             print("Cancel")
@@ -67,10 +73,10 @@ class ViewController: UIViewController {
         
         let okAction = UIAlertAction(title: "OK", style: .default) { (result: UIAlertAction) -> Void in
             self.dateFormatter(timeString: &self.timeString)
-            //        store.sessionRecords.append(SessionRecord(recordedCount: originalCount, date: timeString))
             print("The date and time is \(self.timeString)")
-            self.saveData(recordedCount: self.originalCount, date: self.timeString)
-            print("OK")
+            let textFieldText = alertController.textFields?[0].text
+            self.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText!)
+    
         }
         
         alertController.addAction(cancelAction)
@@ -121,9 +127,9 @@ class ViewController: UIViewController {
         
     }
     
-    private func saveData(recordedCount: Int, date: String) {
+    private func saveData(recordedCount: Int, date: String, note: String) {
         
-        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date))
+        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
         NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: filePath)
         
     }
