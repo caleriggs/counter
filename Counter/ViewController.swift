@@ -64,7 +64,7 @@ class ViewController: UIViewController {
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Add a note/title here (Optional)."
             textField.keyboardAppearance = .dark
-            textField.text = ""t
+            textField.text = " "
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in
@@ -74,19 +74,24 @@ class ViewController: UIViewController {
         let okAction = UIAlertAction(title: "OK", style: .default) { (result: UIAlertAction) -> Void in
             self.dateFormatter(timeString: &self.timeString)
             print("The date and time is \(self.timeString)")
-            let textFieldText = alertController.textFields?[0].text
-            self.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText!)
-    
+//            var textFieldText: String?
+            
+            guard let textFieldText = alertController.textFields?[0].text else {
+                print("there's something there")
+                return
+            }
+        
+            self.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText)
+            }
+        
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            
+            show(alertController, sender: self)
+                
         }
         
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
         
-        show(alertController, sender: self)
-        
-
-
-    }
     
     @IBAction func onViewBtnPressed(_ sender: Any) {
         loadData()

@@ -244,6 +244,7 @@
                                         <connections>
                                             <outlet property="recordedCountLbl" destination="J3a-a5-qkP" id="XFQ-gf-kUb"/>
                                             <outlet property="recordedDateLbl" destination="lA7-il-8fr" id="igZ-9A-lGa"/>
+                                            <outlet property="recordedNoteLbl" destination="RRn-Lg-FT6" id="fcC-WB-Syr"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

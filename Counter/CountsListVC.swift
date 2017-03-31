@@ -14,6 +14,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     let defaults = UserDefaults.standard
     var timeString = ""
+    var deleteRowIndexPath: NSIndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,6 +59,39 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataStore.sharedInstance.sessionRecords.count
 
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+        if editingStyle == .delete {
+            deleteRowIndexPath = indexPath
+            let rowToDelete = DataStore.sharedInstance.sessionRecords[indexPath.row]
+            confirmDelete(recordedSession: rowToDelete)
+        }
+    }
+    
+    func confirmDelete(recordedSession: SessionRecord){
+        let alert = UIAlertController(title: "Delete Session Record", message: "Are you sure you want to delete this record?", preferredStyle: .actionSheet)
+        
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeleteRow)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: cancelDeleteRow)
+        
+        alert.addAction(deleteAction)
+        alert.addAction(cancelAction)
+        
+    }
+    
+    func handleDeleteRow (alertAction: UIAlertAction!) -> Void {
+        if let indexPath = deleteRowIndexPath {
+            tableView.beginUpdates()
+            DataStore.sharedInstance.sessionRecords.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
+            deleteRowIndexPath = nil
+            tableView.endUpdates()
+        }
+    }
+    
+    func cancelDeleteRow (alertAction: UIAlertAction!) -> Void {
+        deleteRowIndexPath = nil
     }
     
 //    public func loadData() {
