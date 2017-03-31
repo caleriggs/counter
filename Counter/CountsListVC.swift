@@ -14,7 +14,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     let defaults = UserDefaults.standard
     var timeString = ""
-    var deleteRowIndexPath: NSIndexPath? = nil
+    var deleteRowIndexPath: IndexPath? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
+//        tableView.reloadData()
     }
 
     
@@ -61,12 +61,13 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             deleteRowIndexPath = indexPath
             let rowToDelete = DataStore.sharedInstance.sessionRecords[indexPath.row]
             confirmDelete(recordedSession: rowToDelete)
         }
+
     }
     
     func confirmDelete(recordedSession: SessionRecord){
@@ -77,20 +78,20 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
-        
+    
     }
     
-    func handleDeleteRow (alertAction: UIAlertAction!) -> Void {
+    func handleDeleteRow (_ alertAction: UIAlertAction!) -> Void {
         if let indexPath = deleteRowIndexPath {
             tableView.beginUpdates()
             DataStore.sharedInstance.sessionRecords.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath as IndexPath], with: .fade)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
             deleteRowIndexPath = nil
             tableView.endUpdates()
-        }
+        } else { print("nothing here")}
     }
     
-    func cancelDeleteRow (alertAction: UIAlertAction!) -> Void {
+    func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
         deleteRowIndexPath = nil
     }
     
