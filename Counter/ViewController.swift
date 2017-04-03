@@ -64,7 +64,6 @@ class ViewController: UIViewController {
         alertController.addTextField { (textField: UITextField) in
             textField.placeholder = "Add a note/title here (Optional)."
             textField.keyboardAppearance = .dark
-            textField.text = " "
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in
@@ -81,7 +80,7 @@ class ViewController: UIViewController {
                 return
             }
         
-            self.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText)
+            StaticFunctions.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText)
             }
         
             alertController.addAction(cancelAction)
@@ -94,7 +93,7 @@ class ViewController: UIViewController {
         
     
     @IBAction func onViewBtnPressed(_ sender: Any) {
-        loadData()
+        StaticFunctions.loadData()
     }
     
     //MARK: FUNCTIONS
@@ -123,24 +122,24 @@ class ViewController: UIViewController {
     
     //MARK: NSKeyedArchiver
     
-    func saveData(recordedCount: Int, date: String, note: String) {
-        
-        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
-        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
-        
-    }
+//    func saveData(recordedCount: Int, date: String, note: String) {
+//        
+//        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
+//        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
+//        
+//    }
     
-    func loadData() {
-        
-        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
-            DataStore.sharedInstance.sessionRecords = ourData
-            print("the data loaded, YAAAAAAYYYYY!!!!!")
-            print("here is our data \(ourData)")
-        } else {
-            print("The data didn't load")
-        }
-        
-    }
+//    func loadData() {
+//        
+//        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
+//            DataStore.sharedInstance.sessionRecords = ourData
+//            print("the data loaded, YAAAAAAYYYYY!!!!!")
+//            print("here is our data \(ourData)")
+//        } else {
+//            print("The data didn't load")
+//        }
+//        
+//    }
 
     
     override func viewDidLoad() {
@@ -150,7 +149,8 @@ class ViewController: UIViewController {
         dateFormatter(timeString: &timeString)
         print("The date and time is \(timeString)")
         
-        loadData()
+        StaticFunctions.loadData()
+        
         
         addBtn.layer.cornerRadius = 5
         minusBtn.layer.cornerRadius = 5

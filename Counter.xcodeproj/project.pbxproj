@@ -14,7 +14,7 @@
 		8E3E19191E4989D100A0FD37 /* Counter.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8E3E19171E4989D000A0FD37 /* Counter.xcdatamodeld */; };
 		8E3E191B1E4989D100A0FD37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191A1E4989D100A0FD37 /* Assets.xcassets */; };
 		8E3E191E1E4989D100A0FD37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E3E191C1E4989D100A0FD37 /* LaunchScreen.storyboard */; };
-		8E50857A1E92D97500CB0B3F /* LoadData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5085791E92D97500CB0B3F /* LoadData.swift */; };
+		8E50857A1E92D97500CB0B3F /* StaticFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5085791E92D97500CB0B3F /* StaticFunctions.swift */; };
 		8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA33E721E57AB0800AF328F /* CountsListVC.swift */; };
 		8EDC74621E76E57D00243068 /* SessionRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDC74611E76E57D00243068 /* SessionRecord.swift */; };
 		8EF3A5361E89CA44003C2318 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF3A5351E89CA44003C2318 /* DataStore.swift */; };
@@ -33,7 +33,7 @@
 		8E3E191A1E4989D100A0FD37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E3E191D1E4989D100A0FD37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E3E191F1E4989D100A0FD37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8E5085791E92D97500CB0B3F /* LoadData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadData.swift; sourceTree = "<group>"; };
+		8E5085791E92D97500CB0B3F /* StaticFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticFunctions.swift; sourceTree = "<group>"; };
 		8E9470E81E8177D20073161A /* RecordCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordCell.swift; sourceTree = "<group>"; };
 		8EA33E721E57AB0800AF328F /* CountsListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountsListVC.swift; sourceTree = "<group>"; };
 		8EDC74611E76E57D00243068 /* SessionRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionRecord.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			children = (
 				8EDC74611E76E57D00243068 /* SessionRecord.swift */,
 				8EF3A5351E89CA44003C2318 /* DataStore.swift */,
-				8E5085791E92D97500CB0B3F /* LoadData.swift */,
+				8E5085791E92D97500CB0B3F /* StaticFunctions.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 				8EF3A5361E89CA44003C2318 /* DataStore.swift in Sources */,
 				8E3E19131E4989D000A0FD37 /* ViewController.swift in Sources */,
 				8E3E19111E4989D000A0FD37 /* AppDelegate.swift in Sources */,
-				8E50857A1E92D97500CB0B3F /* LoadData.swift in Sources */,
+				8E50857A1E92D97500CB0B3F /* StaticFunctions.swift in Sources */,
 				8E34322E1E84557C004DB74B /* RecordCell.swift in Sources */,
 				8EA33E731E57AB0800AF328F /* CountsListVC.swift in Sources */,
 				8E3E19191E4989D100A0FD37 /* Counter.xcdatamodeld in Sources */,
