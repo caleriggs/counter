@@ -123,14 +123,14 @@ class ViewController: UIViewController {
     
     //MARK: NSKeyedArchiver
     
-    private func saveData(recordedCount: Int, date: String, note: String) {
+    func saveData(recordedCount: Int, date: String, note: String) {
         
         DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
         NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
         
     }
     
-    private func loadData() {
+    func loadData() {
         
         if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
             DataStore.sharedInstance.sessionRecords = ourData
@@ -141,6 +141,7 @@ class ViewController: UIViewController {
         }
         
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -151,7 +152,17 @@ class ViewController: UIViewController {
         
         loadData()
         
-        print(DataStore.sharedInstance.sessionRecords)
+        addBtn.layer.cornerRadius = 5
+        minusBtn.layer.cornerRadius = 5
+        resetBtn.layer.cornerRadius = 5
+        
+        confirmResetBtn.layer.borderColor = UIColor.init(red: 240/255, green: 151/255, blue: 60/255, alpha: 1).cgColor
+        confirmResetBtn.layer.borderWidth = 3
+        confirmResetBtn.layer.cornerRadius = 5
+        
+        rejectResetBtn.layer.borderColor = UIColor.init(red: 88/255, green: 199/255, blue: 175/255, alpha: 1).cgColor
+        rejectResetBtn.layer.borderWidth = 3
+        rejectResetBtn.layer.cornerRadius = 5
         
     }
 

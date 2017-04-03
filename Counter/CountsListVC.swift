@@ -25,15 +25,21 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        tableView.reloadData()
+//    }
 
     
     @IBAction func backButtonPressed(_ sender: Any) {
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    @IBAction func shareBtnPressed(_ sender: Any) {
+        print(
+            DataStore.sharedInstance.sessionRecords.first as Any
+        )
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -43,12 +49,21 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             recordCell.updateRecordCellContents(recordedCount: DataStore.sharedInstance.sessionRecords[indexPath.row].recordedCount,
                                                 recordedDate: DataStore.sharedInstance.sessionRecords[indexPath.row].date,
                                                 recordedNote: DataStore.sharedInstance.sessionRecords[indexPath.row].note)
+//            LoadData.loadinstance.loadData()
             
             return recordCell
             
             
         } else {
             return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            cell.backgroundColor = UIColor.init(red: 240/255, green: 151/255, blue: 60/255, alpha: 0.5)
+        } else {
+            cell.backgroundColor = UIColor.init(red: 88/255, green: 199/255, blue: 175/255, alpha: 0.5)
         }
     }
     

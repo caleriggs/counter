@@ -11,8 +11,8 @@ import Foundation
 class SessionRecord: NSObject, NSCoding {
     
     var recordedCount = 0
-    var date = ""
-    var note = ""
+    var date: String = "Blank"
+    var note: String = ""
     
     struct Keys {
         static let recordedCount = "recordedCount"
@@ -37,7 +37,7 @@ class SessionRecord: NSObject, NSCoding {
             date = sessionRecordDate
         }
         if let sessionRecordNote = decoder.decodeObject(forKey: Keys.note) as? String {
-            date = sessionRecordNote
+            note = sessionRecordNote
         }
         
     }
