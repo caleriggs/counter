@@ -14,4 +14,13 @@ class DataStore {
     private init() {}
     var sessionRecords = [SessionRecord]()
     
+    var filePath: String {
+        
+        let manager = FileManager.default
+        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
+        print("the url is \(String(describing: url))")
+        return (url!.appendingPathComponent("Data").path)
+        
+    }
+    
 }

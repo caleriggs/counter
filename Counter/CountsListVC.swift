@@ -26,7 +26,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-//        tableView.reloadData()
+        tableView.reloadData()
     }
 
     
@@ -56,6 +56,10 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         return 1
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataStore.sharedInstance.sessionRecords.count
 
@@ -66,11 +70,12 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             deleteRowIndexPath = indexPath
             let rowToDelete = DataStore.sharedInstance.sessionRecords[indexPath.row]
             confirmDelete(recordedSession: rowToDelete)
+            self.tableView.reloadData()
         }
 
     }
     
-    func confirmDelete(recordedSession: SessionRecord){
+    func confirmDelete(recordedSession: Any){
         let alert = UIAlertController(title: "Delete Session Record", message: "Are you sure you want to delete this record?", preferredStyle: .actionSheet)
         
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: handleDeleteRow)
@@ -78,6 +83,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
+        
+        show(alert, sender: self)
     
     }
     
@@ -86,7 +93,10 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             tableView.beginUpdates()
             DataStore.sharedInstance.sessionRecords.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            deleteRowIndexPath = nil
+            
+            NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
+
+            print("delete attempt")
             tableView.endUpdates()
         } else { print("nothing here")}
     }
@@ -94,17 +104,6 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
         deleteRowIndexPath = nil
     }
-    
-//    public func loadData() {
-//        
-//        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
-//            DataStore.sharedInstance.sessionRecords = ourData
-//            print("the data loaded, YAAAAAAYYYYY!!!!!")
-//            print("here is our data \(ourData)")
-//        } else {
-//            print("The data didn't load")
-//        }
-//        
-//    }
+
 }
 

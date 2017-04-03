@@ -190,6 +190,7 @@
                                                 <action selector="backButtonPressed:" destination="3b1-mY-ljo" id="WnK-wA-EeK"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="mf0-1n-Qh4"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

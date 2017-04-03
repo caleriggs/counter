@@ -103,8 +103,8 @@ class ViewController: UIViewController {
         resetBtn.isHidden = !resetBtn.isHidden
         confirmResetBtn.isHidden = !confirmResetBtn.isHidden
         rejectResetBtn.isHidden = !rejectResetBtn.isHidden
-        addBtn.isEnabled = !addBtn.isEnabled
-        minusBtn.isEnabled = !minusBtn.isEnabled
+        addBtn.isHidden = !addBtn.isHidden
+        minusBtn.isHidden = !minusBtn.isHidden
     }
     
     private func countLblManager() {
@@ -123,25 +123,16 @@ class ViewController: UIViewController {
     
     //MARK: NSKeyedArchiver
     
-    var filePath: String {
-        
-        let manager = FileManager.default
-        let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first
-        print("the url is \(String(describing: url))")
-        return (url!.appendingPathComponent("Data").path)
-        
-    }
-    
     private func saveData(recordedCount: Int, date: String, note: String) {
         
         DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
-        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: filePath)
+        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
         
     }
     
     private func loadData() {
         
-        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: filePath) as? [SessionRecord] {
+        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
             DataStore.sharedInstance.sessionRecords = ourData
             print("the data loaded, YAAAAAAYYYYY!!!!!")
             print("here is our data \(ourData)")
