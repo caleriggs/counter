@@ -23,6 +23,20 @@ class DataStore {
         
     }
     
+    static func loadData() {
+        
+        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
+            DataStore.sharedInstance.sessionRecords = ourData
+        }
+        
+    }
+    
+    static func saveData(recordedCount: String, date: String, note: String) {
+        
+        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
+        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
+        
+    }
     
     
 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MessageUI
 
-class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -24,10 +25,6 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         
     }
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        tableView.reloadData()
-//    }
 
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -35,13 +32,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         dismiss(animated: true, completion: nil)
         
     }
-    
-    @IBAction func shareBtnPressed(_ sender: Any) {
-        print(
-            DataStore.sharedInstance.sessionRecords.first as Any
-        )
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
@@ -49,7 +40,6 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             recordCell.updateRecordCellContents(recordedCount: DataStore.sharedInstance.sessionRecords[indexPath.row].recordedCount,
                                                 recordedDate: DataStore.sharedInstance.sessionRecords[indexPath.row].date,
                                                 recordedNote: DataStore.sharedInstance.sessionRecords[indexPath.row].note)
-//            LoadData.loadinstance.loadData()
             
             return recordCell
             
@@ -90,6 +80,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     }
     
+    //MARK: Alert, Alert handlers
+    
     func confirmDelete(recordedSession: Any){
         let alert = UIAlertController(title: "Delete Session Record", message: "Are you sure you want to delete this record?", preferredStyle: .actionSheet)
         
@@ -106,14 +98,14 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func handleDeleteRow (_ alertAction: UIAlertAction!) -> Void {
         if let indexPath = deleteRowIndexPath {
             tableView.beginUpdates()
+            
             DataStore.sharedInstance.sessionRecords.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
 
-            print("delete attempt")
             tableView.endUpdates()
-        } else { print("nothing here")}
+        }
     }
     
     func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
@@ -121,4 +113,6 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
 
 }
+
+
 

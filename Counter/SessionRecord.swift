@@ -10,8 +10,8 @@ import Foundation
 
 class SessionRecord: NSObject, NSCoding {
     
-    var recordedCount = 0
-    var date: String = "Blank"
+    var recordedCount: String = ""
+    var date: String = ""
     var note: String = ""
     
     struct Keys {
@@ -22,7 +22,7 @@ class SessionRecord: NSObject, NSCoding {
     
     override init () {}
     
-    init(recordedCount: Int, date: String, note: String) {
+    init(recordedCount: String, date: String, note: String) {
         self.date = date
         self.recordedCount = recordedCount
         self.note = note
@@ -31,8 +31,9 @@ class SessionRecord: NSObject, NSCoding {
     required init(coder decoder: NSCoder) {
         super.init()
         
-        let sessionRecordCount = decoder.decodeInteger(forKey: Keys.recordedCount)
-        recordedCount = sessionRecordCount
+        if let sessionRecordCount = decoder.decodeObject(forKey: Keys.recordedCount) as? String {
+            recordedCount = sessionRecordCount
+        }
         if let sessionRecordDate = decoder.decodeObject(forKey: Keys.date) as? String {
             date = sessionRecordDate
         }

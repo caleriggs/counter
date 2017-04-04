@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var addBtn: UIButton!
@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var confirmResetBtn: UIButton!
     @IBOutlet weak var rejectResetBtn: UIButton!
+    @IBOutlet weak var resetLbl: UILabel!
     
     var originalCount: Int = 0
     var timeString = ""
@@ -62,25 +63,23 @@ class ViewController: UIViewController {
         let alertController = UIAlertController(title: "Submit Record", message: "Would you like to record this count?", preferredStyle: .alert)
         
         alertController.addTextField { (textField: UITextField) in
-            textField.placeholder = "Add a note/title here (Optional)."
+            textField.delegate = self
+            textField.placeholder = "Optional: Add note (Max Char = 50)"
             textField.keyboardAppearance = .dark
+            
+            
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in
-            print("Cancel")
-        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in }
         
         let okAction = UIAlertAction(title: "OK", style: .default) { (result: UIAlertAction) -> Void in
             self.dateFormatter(timeString: &self.timeString)
-            print("The date and time is \(self.timeString)")
-//            var textFieldText: String?
             
             guard let textFieldText = alertController.textFields?[0].text else {
-                print("there's something there")
                 return
-            }
+                }
         
-            StaticFunctions.saveData(recordedCount: self.originalCount, date: self.timeString, note: textFieldText)
+            DataStore.saveData(recordedCount: "\(self.originalCount)", date: self.timeString, note: textFieldText)
             }
         
             alertController.addAction(cancelAction)
@@ -93,7 +92,7 @@ class ViewController: UIViewController {
         
     
     @IBAction func onViewBtnPressed(_ sender: Any) {
-        StaticFunctions.loadData()
+        DataStore.loadData()
     }
     
     //MARK: FUNCTIONS
@@ -104,6 +103,7 @@ class ViewController: UIViewController {
         rejectResetBtn.isHidden = !rejectResetBtn.isHidden
         addBtn.isHidden = !addBtn.isHidden
         minusBtn.isHidden = !minusBtn.isHidden
+        resetLbl.isHidden = !resetLbl.isHidden
     }
     
     private func countLblManager() {
@@ -116,40 +116,23 @@ class ViewController: UIViewController {
     func dateFormatter(timeString: inout String) {
         let now = NSDate()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM dd, yyyy \r hh:mma zzz"
+        dateFormatter.dateFormat = "MMMM dd, yyyy hh:mma"
         timeString = dateFormatter.string(from: now as Date)
     }
     
-    //MARK: NSKeyedArchiver
-    
-//    func saveData(recordedCount: Int, date: String, note: String) {
-//        
-//        DataStore.sharedInstance.sessionRecords.append(SessionRecord(recordedCount: recordedCount, date: date, note: note))
-//        NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
-//        
-//    }
-    
-//    func loadData() {
-//        
-//        if let ourData = NSKeyedUnarchiver.unarchiveObject(withFile: DataStore.sharedInstance.filePath) as? [SessionRecord] {
-//            DataStore.sharedInstance.sessionRecords = ourData
-//            print("the data loaded, YAAAAAAYYYYY!!!!!")
-//            print("here is our data \(ourData)")
-//        } else {
-//            print("The data didn't load")
-//        }
-//        
-//    }
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string) as NSString
+        return newString.length <= 50
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
-        print("The date and time is \(timeString)")
+
         
-        StaticFunctions.loadData()
+        DataStore.loadData()
         
         
         addBtn.layer.cornerRadius = 5
@@ -167,6 +150,9 @@ class ViewController: UIViewController {
     }
 
 }
+
+
+
 
 
 
