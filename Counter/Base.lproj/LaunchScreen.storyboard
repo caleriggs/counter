@@ -30,9 +30,8 @@
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="CLICKY THING" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHe-0M-PR3">
-                                <rect key="frame" x="0.0" y="66" width="375" height="287"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CLICKY" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHe-0M-PR3">
+                                <rect key="frame" x="0.0" y="66" width="375" height="86.5"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="63"/>
                                 <color key="textColor" red="0.2250705295138889" green="0.2250705295138889" blue="0.2250705295138889" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -40,9 +39,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="VHe-0M-PR3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="46" id="CBH-Uw-kUn"/>
                             <constraint firstItem="Gt7-X4-QNt" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="FAM-mU-7Z7"/>
+                            <constraint firstAttribute="trailing" secondItem="VHe-0M-PR3" secondAttribute="trailing" id="RkC-48-jnw"/>
                             <constraint firstAttribute="trailing" secondItem="Gt7-X4-QNt" secondAttribute="trailing" id="fLw-y8-DZr"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Gt7-X4-QNt" secondAttribute="bottom" constant="8" id="kea-9y-zng"/>
+                            <constraint firstItem="VHe-0M-PR3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="yr0-9w-Csy"/>
                         </constraints>
                     </view>
                 </viewController>
