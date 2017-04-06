@@ -70,9 +70,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in }
+        let cancelAction = UIAlertAction(title: "NO", style: .cancel) { (result: UIAlertAction) -> Void in }
         
-        let okAction = UIAlertAction(title: "OK", style: .default) { (result: UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "YES", style: .default) { (result: UIAlertAction) -> Void in
             self.dateFormatter(timeString: &self.timeString)
             
             guard let textFieldText = alertController.textFields?[0].text else {
