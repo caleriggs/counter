@@ -66,6 +66,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
             textField.delegate = self
             textField.placeholder = "Optional: Add note (Max Char = 50)"
             textField.keyboardAppearance = .dark
+            textField.autocorrectionType = .yes
+            textField.autocapitalizationType = .sentences
             
             
         }

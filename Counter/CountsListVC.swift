@@ -17,6 +17,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     var timeString = ""
     var deleteRowIndexPath: IndexPath? = nil
     
+    var body = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,6 +33,17 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         
         dismiss(animated: true, completion: nil)
         
+    }
+    
+    @IBAction func composeButtonPressed(_ sender: Any) {
+        
+        emailBodyHtml()
+        let mailComposeVC = configuredMailComposeVC(body: body)
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeVC, animated: true, completion: emailCompletionHandler)
+        } else {
+            showMailErrorAlert()
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -111,8 +124,44 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
         deleteRowIndexPath = nil
     }
+    
+    //MARK: Email contents 
 
+    func configuredMailComposeVC(body: String) -> MFMailComposeViewController {
+        
+        let mailComposerVC = MFMailComposeViewController()
+        mailComposerVC.mailComposeDelegate = self
+        
+        mailComposerVC.setMessageBody(body, isHTML: true)
+        
+        return mailComposerVC
+    }
+    
+    func emailBodyHtml() {
+        
+        let store = DataStore.sharedInstance.sessionRecords
+        for records in store {
+            let bodyLine = "<dl><dt>Note: \(records.note)</dt> <dd> - Recorded Count:\(records.recordedCount)</dd> <dd>- Date: \(records.date)</dd><br>"
+            body += bodyLine
+        }
+    }
+    
+    func showMailErrorAlert() {
+        let mailErrorAlert = UIAlertController(title: "Cannot Send Email", message: "Please make sure your email is configured properly", preferredStyle: .alert)
+        show(mailErrorAlert, sender: self)
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    func emailCompletionHandler() {
+        body = ""
+    }
+    
 }
+
+
 
 
 

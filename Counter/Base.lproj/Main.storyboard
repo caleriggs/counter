@@ -201,6 +201,11 @@
                                                 <action selector="backButtonPressed:" destination="3b1-mY-ljo" id="WnK-wA-EeK"/>
                                             </connections>
                                         </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="744-ME-vNo">
+                                            <connections>
+                                                <action selector="composeButtonPressed:" destination="3b1-mY-ljo" id="sa6-mq-4Zx"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
