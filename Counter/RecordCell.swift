@@ -21,4 +21,6 @@ class RecordCell: UITableViewCell {
         recordedNoteLbl.text = recordedNote
     }
     
+    
+    
 }

@@ -14,6 +14,7 @@ class DataStore {
     private init() {}
     var sessionRecords = [SessionRecord]()
     
+    
     var filePath: String {
         
         let manager = FileManager.default
@@ -37,6 +38,8 @@ class DataStore {
         NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
         
     }
+    
+
     
     
 }

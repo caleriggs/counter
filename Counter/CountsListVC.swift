@@ -13,9 +13,9 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     
     @IBOutlet weak var tableView: UITableView!
     
-    let defaults = UserDefaults.standard
     var timeString = ""
     var deleteRowIndexPath: IndexPath? = nil
+    let defaults = UserDefaults.standard
     
     var body = ""
     
@@ -46,6 +46,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         }
     }
 
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let recordCell = tableView.dequeueReusableCell(withIdentifier: "recordedCountCell", for: indexPath) as? RecordCell {
@@ -61,15 +62,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             return UITableViewCell()
         }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor.init(red: 240/255, green: 151/255, blue: 60/255, alpha: 0.5)
-        } else {
-            cell.backgroundColor = UIColor.init(red: 88/255, green: 199/255, blue: 175/255, alpha: 0.5)
-        }
-    }
-    
+       
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -109,6 +102,15 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func handleDeleteRow (_ alertAction: UIAlertAction!) -> Void {
+        deleteRow()
+    }
+    
+    func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
+        deleteRowIndexPath = nil
+    }
+
+    
+    func deleteRow () {
         if let indexPath = deleteRowIndexPath {
             tableView.beginUpdates()
             
@@ -116,13 +118,9 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
             tableView.deleteRows(at: [indexPath], with: .automatic)
             
             NSKeyedArchiver.archiveRootObject(DataStore.sharedInstance.sessionRecords, toFile: DataStore.sharedInstance.filePath)
-
+            
             tableView.endUpdates()
         }
-    }
-    
-    func cancelDeleteRow (_ alertAction: UIAlertAction!) -> Void {
-        deleteRowIndexPath = nil
     }
     
     //MARK: Email contents 
