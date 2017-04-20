@@ -16,14 +16,20 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     var timeString = ""
     var deleteRowIndexPath: IndexPath? = nil
     let defaults = UserDefaults.standard
+    var emailBody = ""
+    var isEmailPermissionGranted = false
     
-    var body = ""
+    struct defaultKeys {
+        static let emailPermissionGranted = "emailPermissionGranted"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.delegate = self
         tableView.dataSource = self
+        
+        isEmailPermissionGranted = defaults.bool(forKey: defaultKeys.emailPermissionGranted)
         
         
     }
@@ -36,14 +42,12 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     @IBAction func composeButtonPressed(_ sender: Any) {
-        
-        emailBodyHtml()
-        let mailComposeVC = configuredMailComposeVC(body: body)
-        if MFMailComposeViewController.canSendMail() {
-            self.present(mailComposeVC, animated: true, completion: emailCompletionHandler)
+        if isEmailPermissionGranted == true {
+            presentMailVC()
         } else {
-            showMailErrorAlert()
+            emailPermissionAlert()
         }
+            
     }
 
 
@@ -127,6 +131,8 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
 
     func configuredMailComposeVC(body: String) -> MFMailComposeViewController {
         
+        emailBodyHtml()
+        
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         
@@ -140,7 +146,7 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
         let store = DataStore.sharedInstance.sessionRecords
         for records in store {
             let bodyLine = "<dl><dt>Note: \(records.note)</dt> <dd> - Recorded Count:\(records.recordedCount)</dd> <dd>- Date: \(records.date)</dd><br>"
-            body += bodyLine
+            emailBody += bodyLine
         }
     }
     
@@ -154,7 +160,49 @@ class CountsListVC: UIViewController, UITableViewDataSource, UITableViewDelegate
     }
     
     func emailCompletionHandler() {
-        body = ""
+        emailBody = ""
+    }
+    
+    //MARK: EMAIL PERMISSIONS
+    
+    func emailPermissionAlert() {
+        let alertController = UIAlertController(title: "\"Clicky\" would like access to Mail.", message: "", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Don't Allow", style: .cancel, handler: handleEmailPermissionDenied)
+        
+        let allowAction = UIAlertAction(title: "Allow", style: .default, handler: handleEmailPermissionGranted)
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(allowAction)
+        
+        show(alertController, sender: self)
+    }
+    
+    func handleEmailPermissionDenied(_ alertAction: UIAlertAction!) -> Void {
+        
+    }
+    
+    func handleEmailPermissionGranted(_ alertAction: UIAlertAction!) -> Void {
+        defaults.set(true, forKey: defaultKeys.emailPermissionGranted)
+        emailBodyHtml()
+        let mailComposeVC = configuredMailComposeVC(body: emailBody)
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeVC, animated: true, completion: emailCompletionHandler)
+        } else {
+            showMailErrorAlert()
+        }
+        isEmailPermissionGranted = defaults.bool(forKey: defaultKeys.emailPermissionGranted)
+        emailBodyHtml()
+        presentMailVC()
+    }
+    
+    func presentMailVC() {
+        let mailComposeVC = configuredMailComposeVC(body: emailBody)
+        if MFMailComposeViewController.canSendMail() {
+            self.present(mailComposeVC, animated: true, completion: emailCompletionHandler)
+        } else {
+            showMailErrorAlert()
+        }
     }
     
 }

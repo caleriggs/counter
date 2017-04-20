@@ -82,6 +82,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 }
         
             DataStore.saveData(recordedCount: "\(self.originalCount)", date: self.timeString, note: textFieldText)
+            self.submittedNotifier()
             }
         
             alertController.addAction(cancelAction)
@@ -125,6 +126,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newString = (textField.text! as NSString).replacingCharacters(in: range, with: string) as NSString
         return newString.length <= 50
+    }
+    
+    func submittedNotifier() {
+        let submittedAlert = UIAlertController(title: "Success", message: "Count submitted successfully", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        
+        submittedAlert.addAction(okAction)
+        
+        show(submittedAlert, sender: self)
     }
     
     override func viewDidLoad() {
