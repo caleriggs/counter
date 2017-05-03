@@ -22,18 +22,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var originalCount: Int = 0
     var timeString = ""
-
     
-//MARK: IBActions
     
-
+    //MARK: IBActions
+    
+    
     @IBAction func onAddBtnPressed(_ sender: Any) {
         
         originalCount += 1
         countLblManager()
         
     }
-
+    
     @IBAction func onMinusBtnPressed(_ sender: Any) {
         
         originalCount -= 1
@@ -79,20 +79,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
             guard let textFieldText = alertController.textFields?[0].text else {
                 return
-                }
-        
+            }
+            
             DataStore.saveData(recordedCount: "\(self.originalCount)", date: self.timeString, note: textFieldText)
             self.submittedNotifier()
-            }
-        
-            alertController.addAction(cancelAction)
-            alertController.addAction(okAction)
-            
-            show(alertController, sender: self)
-                
         }
         
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
         
+        show(alertController, sender: self)
+        
+    }
+    
+    
     
     @IBAction func onViewBtnPressed(_ sender: Any) {
         DataStore.loadData()
@@ -143,7 +143,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
-
+        
         
         DataStore.loadData()
         
@@ -161,7 +161,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         rejectResetBtn.layer.cornerRadius = 5
         
     }
-
+    
 }
 
 
