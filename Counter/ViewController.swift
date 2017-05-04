@@ -60,7 +60,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onSubmitBtnPressed(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Submit Record", message: "Would you like to record this count?", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Save Count?", message: "Would you like to record this count?", preferredStyle: .alert)
         
         alertController.addTextField { (textField: UITextField) in
             textField.delegate = self
@@ -72,9 +72,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         }
         
-        let cancelAction = UIAlertAction(title: "NO", style: .cancel) { (result: UIAlertAction) -> Void in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (result: UIAlertAction) -> Void in }
         
-        let okAction = UIAlertAction(title: "YES", style: .default) { (result: UIAlertAction) -> Void in
+        let okAction = UIAlertAction(title: "Submit", style: .default) { (result: UIAlertAction) -> Void in
             self.dateFormatter(timeString: &self.timeString)
             
             guard let textFieldText = alertController.textFields?[0].text else {
@@ -129,12 +129,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func submittedNotifier() {
-        let submittedAlert = UIAlertController(title: "Success", message: "Count submitted successfully", preferredStyle: .alert)
-        
+        let submittedAlert = UIAlertController(title: "Success", message: "Count saved successfully!", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        
         submittedAlert.addAction(okAction)
-        
         show(submittedAlert, sender: self)
     }
     
@@ -143,10 +140,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         countLbl.text = "0"
         dateFormatter(timeString: &timeString)
-        
-        
         DataStore.loadData()
-        
         
         addBtn.layer.cornerRadius = 5
         minusBtn.layer.cornerRadius = 5
@@ -163,21 +157,3 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -143,7 +143,7 @@
                                                 <segue destination="3b1-mY-ljo" kind="showDetail" identifier="MainToCountsVC" id="hQT-d0-LBp"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Submit" id="A4B-t4-Mtu">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="A4B-t4-Mtu">
                                             <connections>
                                                 <action selector="onSubmitBtnPressed:" destination="BYZ-38-t0r" id="qWw-DG-Yre"/>
                                             </connections>
@@ -195,7 +195,7 @@
                                     <constraint firstAttribute="height" constant="60" id="u4d-Q3-VGi"/>
                                 </constraints>
                                 <items>
-                                    <navigationItem title="Stored Counts" id="uNu-8b-27j">
+                                    <navigationItem title="Saved Counts" id="uNu-8b-27j">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="Ote-vc-yMd">
                                             <connections>
                                                 <action selector="backButtonPressed:" destination="3b1-mY-ljo" id="WnK-wA-EeK"/>
